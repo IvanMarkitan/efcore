@@ -341,92 +341,143 @@ WHERE ""s"".""Banner5"" = @__byteArrayParam_0");
             return base.Array_access_on_byte_array(async);
         }
 
-        [ConditionalTheory] // #24506
+        [ConditionalTheory]
         [MemberData(nameof(IsAsyncData))]
-        public override Task Where_DateOnly_ctor(bool async)
-            => Task.CompletedTask;
+        public override async Task Where_DateOnly_Year(bool async)
+        {
+            await base.Where_DateOnly_Year(async);
 
-        [ConditionalTheory] // #24506
+            AssertSql(
+                @"SELECT ""m"".""Id"", ""m"".""CodeName"", ""m"".""Date"", ""m"".""Duration"", ""m"".""Rating"", ""m"".""Time"", ""m"".""Timeline""
+FROM ""Missions"" AS ""m""
+WHERE CAST(strftime('%Y', ""m"".""Date"") AS INTEGER) = 1990");
+        }
+
+        [ConditionalTheory]
         [MemberData(nameof(IsAsyncData))]
-        public override Task Where_DateOnly_Year(bool async)
-            => Task.CompletedTask;
+        public override async Task Where_DateOnly_Month(bool async)
+        {
+            await base.Where_DateOnly_Month(async);
 
-        [ConditionalTheory] // #24506
+            AssertSql(
+                @"SELECT ""m"".""Id"", ""m"".""CodeName"", ""m"".""Date"", ""m"".""Duration"", ""m"".""Rating"", ""m"".""Time"", ""m"".""Timeline""
+FROM ""Missions"" AS ""m""
+WHERE CAST(strftime('%m', ""m"".""Date"") AS INTEGER) = 11");
+        }
+
+        [ConditionalTheory]
         [MemberData(nameof(IsAsyncData))]
-        public override Task Where_DateOnly_Month(bool async)
-            => Task.CompletedTask;
+        public override async Task Where_DateOnly_Day(bool async)
+        {
+            await base.Where_DateOnly_Day(async);
 
-        [ConditionalTheory] // #24506
+            AssertSql(
+                @"SELECT ""m"".""Id"", ""m"".""CodeName"", ""m"".""Date"", ""m"".""Duration"", ""m"".""Rating"", ""m"".""Time"", ""m"".""Timeline""
+FROM ""Missions"" AS ""m""
+WHERE CAST(strftime('%d', ""m"".""Date"") AS INTEGER) = 10");
+        }
+
+        [ConditionalTheory]
         [MemberData(nameof(IsAsyncData))]
-        public override Task Where_DateOnly_Day(bool async)
-            => Task.CompletedTask;
+        public override async Task Where_DateOnly_DayOfYear(bool async)
+        {
+            await base.Where_DateOnly_DayOfYear(async);
 
-        [ConditionalTheory] // #24506
+            AssertSql(
+                @"SELECT ""m"".""Id"", ""m"".""CodeName"", ""m"".""Date"", ""m"".""Duration"", ""m"".""Rating"", ""m"".""Time"", ""m"".""Timeline""
+FROM ""Missions"" AS ""m""
+WHERE CAST(strftime('%j', ""m"".""Date"") AS INTEGER) = 314");
+        }
+
+        [ConditionalTheory]
         [MemberData(nameof(IsAsyncData))]
-        public override Task Where_DateOnly_DayOfYear(bool async)
-            => Task.CompletedTask;
+        public override async Task Where_DateOnly_DayOfWeek(bool async)
+        {
+            await base.Where_DateOnly_DayOfWeek(async);
 
-        [ConditionalTheory] // #24506
+            AssertSql(
+                @"SELECT ""m"".""Id"", ""m"".""CodeName"", ""m"".""Date"", ""m"".""Duration"", ""m"".""Rating"", ""m"".""Time"", ""m"".""Timeline""
+FROM ""Missions"" AS ""m""
+WHERE CAST(strftime('%w', ""m"".""Date"") AS INTEGER) = 6");
+        }
+
+        [ConditionalTheory]
         [MemberData(nameof(IsAsyncData))]
-        public override Task Where_DateOnly_DayOfWeek(bool async)
-            => Task.CompletedTask;
+        public override async Task Where_DateOnly_AddYears(bool async)
+        {
+            await base.Where_DateOnly_AddYears(async);
 
-        [ConditionalTheory] // #24506
+            AssertSql(
+                @"SELECT ""m"".""Id"", ""m"".""CodeName"", ""m"".""Date"", ""m"".""Duration"", ""m"".""Rating"", ""m"".""Time"", ""m"".""Timeline""
+FROM ""Missions"" AS ""m""
+WHERE strftime('%Y-%m-%d', ""m"".""Date"", CAST(3 AS TEXT) || ' years') = '1993-11-10'");
+        }
+
+        [ConditionalTheory]
         [MemberData(nameof(IsAsyncData))]
-        public override Task Where_DateOnly_AddYears(bool async)
-            => Task.CompletedTask;
+        public override async Task Where_DateOnly_AddMonths(bool async)
+        {
+            await base.Where_DateOnly_AddMonths(async);
 
-        [ConditionalTheory] // #24506
+            AssertSql(
+                @"SELECT ""m"".""Id"", ""m"".""CodeName"", ""m"".""Date"", ""m"".""Duration"", ""m"".""Rating"", ""m"".""Time"", ""m"".""Timeline""
+FROM ""Missions"" AS ""m""
+WHERE strftime('%Y-%m-%d', ""m"".""Date"", CAST(3 AS TEXT) || ' months') = '1991-02-10'");
+        }
+
+        [ConditionalTheory]
         [MemberData(nameof(IsAsyncData))]
-        public override Task Where_DateOnly_AddMonths(bool async)
-            => Task.CompletedTask;
+        public override async Task Where_DateOnly_AddDays(bool async)
+        {
+            await base.Where_DateOnly_AddDays(async);
 
-        [ConditionalTheory] // #24506
-        [MemberData(nameof(IsAsyncData))]
-        public override Task Where_DateOnly_AddDays(bool async)
-            => Task.CompletedTask;
+            AssertSql(
+                @"SELECT ""m"".""Id"", ""m"".""CodeName"", ""m"".""Date"", ""m"".""Duration"", ""m"".""Rating"", ""m"".""Time"", ""m"".""Timeline""
+FROM ""Missions"" AS ""m""
+WHERE strftime('%Y-%m-%d', ""m"".""Date"", CAST(3 AS TEXT) || ' days') = '1990-11-13'");
+        }
 
-        [ConditionalTheory] // #24506
+        [ConditionalTheory] // #18844
         [MemberData(nameof(IsAsyncData))]
         public override Task Where_TimeOnly_Hour(bool async)
             => Task.CompletedTask;
 
-        [ConditionalTheory] // #24506
+        [ConditionalTheory] // #18844
         [MemberData(nameof(IsAsyncData))]
         public override Task Where_TimeOnly_Minute(bool async)
             => Task.CompletedTask;
 
-        [ConditionalTheory] // #24506
+        [ConditionalTheory] // #18844
         [MemberData(nameof(IsAsyncData))]
         public override Task Where_TimeOnly_Second(bool async)
             => Task.CompletedTask;
 
-        [ConditionalTheory] // #24506
+        [ConditionalTheory] // #18844
         [MemberData(nameof(IsAsyncData))]
         public override Task Where_TimeOnly_Millisecond(bool async)
             => Task.CompletedTask;
 
-        [ConditionalTheory] // #24506
+        [ConditionalTheory] // #18844
         [MemberData(nameof(IsAsyncData))]
         public override Task Where_TimeOnly_AddHours(bool async)
             => Task.CompletedTask;
 
-        [ConditionalTheory] // #24506
+        [ConditionalTheory] // #18844
         [MemberData(nameof(IsAsyncData))]
         public override Task Where_TimeOnly_AddMinutes(bool async)
             => Task.CompletedTask;
 
-        [ConditionalTheory] // #24506
+        [ConditionalTheory] // #18844
         [MemberData(nameof(IsAsyncData))]
         public override Task Where_TimeOnly_Add_TimeSpan(bool async)
             => Task.CompletedTask;
 
-        [ConditionalTheory] // #24506
+        [ConditionalTheory] // #18844
         [MemberData(nameof(IsAsyncData))]
         public override Task Where_TimeOnly_IsBetween(bool async)
             => Task.CompletedTask;
 
-        [ConditionalTheory] // #24506
+        [ConditionalTheory] // #18844
         [MemberData(nameof(IsAsyncData))]
         public override Task Where_TimeOnly_subtract_TimeOnly(bool async)
             => Task.CompletedTask;

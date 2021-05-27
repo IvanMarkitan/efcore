@@ -61,7 +61,11 @@ namespace Microsoft.EntityFrameworkCore.Sqlite.Query.Internal
             Check.NotNull(returnType, nameof(returnType));
             Check.NotNull(logger, nameof(logger));
 
-            if (member.DeclaringType == typeof(DateTime))
+            if (member.DeclaringType == typeof(DateTime)
+#if NET6_0_OR_GREATER
+                || member.DeclaringType == typeof(DateOnly)
+#endif
+            )
             {
                 var memberName = member.Name;
 

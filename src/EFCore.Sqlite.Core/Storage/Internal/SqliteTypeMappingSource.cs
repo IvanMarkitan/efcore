@@ -91,7 +91,12 @@ namespace Microsoft.EntityFrameworkCore.Sqlite.Storage.Internal
             { typeof(decimal), new SqliteDecimalTypeMapping(TextTypeName) },
             { typeof(double), _real },
             { typeof(float), new FloatTypeMapping(RealTypeName) },
-            { typeof(Guid), new SqliteGuidTypeMapping(TextTypeName) }
+            { typeof(Guid), new SqliteGuidTypeMapping(TextTypeName) },
+
+#if NET6_0_OR_GREATER
+            { typeof(DateOnly), new SqliteDateOnlyTypeMapping(TextTypeName) },
+            { typeof(TimeOnly), new TimeOnlyTypeMapping(TextTypeName) },
+#endif
         };
 
         private readonly Dictionary<string, RelationalTypeMapping> _storeTypeMappings = new(StringComparer.OrdinalIgnoreCase)

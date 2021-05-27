@@ -5,6 +5,8 @@
 
 using System;
 using System.Data;
+using System.Globalization;
+using Microsoft.EntityFrameworkCore.Utilities;
 
 namespace Microsoft.EntityFrameworkCore.Storage
 {
@@ -48,11 +50,15 @@ namespace Microsoft.EntityFrameworkCore.Storage
         protected override RelationalTypeMapping Clone(RelationalTypeMappingParameters parameters)
             => new TimeOnlyTypeMapping(parameters);
 
-        /// <summary>
-        ///     Gets the string format to be used to generate SQL literals of this type.
-        /// </summary>
-        protected override string SqlLiteralFormatString
-            => "'{0}'";
+        /// <inheritdoc />
+        protected override string GenerateNonNullSqlLiteral(object value)
+        {
+            var timeOnly = (TimeOnly)value;
+
+            return timeOnly.Ticks % 10000000 == 0
+                ? FormattableString.Invariant($@"TIME '{value:HH\:mm\:ss}'")
+                : FormattableString.Invariant($@"TIME '{value:HH\:mm\:ss\.FFFFFF}'");
+        }
     }
 }
 #endif

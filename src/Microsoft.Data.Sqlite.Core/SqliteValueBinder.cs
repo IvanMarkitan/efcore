@@ -129,7 +129,6 @@ namespace Microsoft.Data.Sqlite
             }
             else if (type == typeof(TimeOnly))
             {
-
                 var timeOnly = (TimeOnly)_value;
                 var value = timeOnly.Millisecond > 0
                     ? timeOnly.ToString(@"HH:mm:ss.FFF", CultureInfo.InvariantCulture)

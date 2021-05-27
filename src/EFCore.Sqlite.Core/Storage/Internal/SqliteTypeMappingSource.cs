@@ -95,7 +95,7 @@ namespace Microsoft.EntityFrameworkCore.Sqlite.Storage.Internal
 
 #if NET6_0_OR_GREATER
             { typeof(DateOnly), new SqliteDateOnlyTypeMapping(TextTypeName) },
-            { typeof(TimeOnly), new TimeOnlyTypeMapping(TextTypeName) },
+            { typeof(TimeOnly), new SqliteTimeOnlyTypeMapping(TextTypeName) },
 #endif
         };
 

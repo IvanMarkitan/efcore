@@ -149,19 +149,20 @@ namespace Microsoft.EntityFrameworkCore.Sqlite.Query.Internal
             MethodInfo method,
             IReadOnlyList<SqlExpression> arguments)
         {
-            if (_methodInfoToUnitSuffix.TryGetValue(method, out var unitSuffix))
+            if (instance is not null && _methodInfoToUnitSuffix.TryGetValue(method, out var unitSuffix))
             {
-                return SqliteExpression.Strftime(
-                    _sqlExpressionFactory,
-                    method.ReturnType,
-                    "%Y-%m-%d",
-                    instance!,
+                return _sqlExpressionFactory.Function(
+                    "date",
                     new[]
                     {
+                        instance,
                         _sqlExpressionFactory.Add(
                             _sqlExpressionFactory.Convert(arguments[0], typeof(string)),
                             _sqlExpressionFactory.Constant(unitSuffix))
-                    });
+                    },
+                    argumentsPropagateNullability: new[] { true, true },
+                    nullable: true,
+                    returnType: method.ReturnType);
             }
 
             return null;

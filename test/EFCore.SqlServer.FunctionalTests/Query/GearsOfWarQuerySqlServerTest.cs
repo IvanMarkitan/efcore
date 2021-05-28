@@ -7970,11 +7970,6 @@ ORDER BY [t].[Length], [t2].[HasSoulPatch], [t2].[CityOfBirthName], [t2].[Id]");
 
         [ConditionalTheory] // #24507
         [MemberData(nameof(IsAsyncData))]
-        public override Task Where_DateOnly_ctor(bool async)
-            => Task.CompletedTask;
-
-        [ConditionalTheory] // #24507
-        [MemberData(nameof(IsAsyncData))]
         public override Task Where_DateOnly_Year(bool async)
             => Task.CompletedTask;
 

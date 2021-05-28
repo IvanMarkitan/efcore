@@ -57,7 +57,7 @@ namespace Microsoft.EntityFrameworkCore.Storage
 
             return timeOnly.Ticks % 10000000 == 0
                 ? FormattableString.Invariant($@"TIME '{value:HH\:mm\:ss}'")
-                : FormattableString.Invariant($@"TIME '{value:HH\:mm\:ss\.FFFFFF}'");
+                : FormattableString.Invariant($@"TIME '{value:HH\:mm\:ss\.FFFFFFF}'");
         }
     }
 }

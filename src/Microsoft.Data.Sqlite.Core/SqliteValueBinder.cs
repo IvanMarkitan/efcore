@@ -130,10 +130,18 @@ namespace Microsoft.Data.Sqlite
             else if (type == typeof(TimeOnly))
             {
                 var timeOnly = (TimeOnly)_value;
-                var value = timeOnly.Millisecond > 0
-                    ? timeOnly.ToString(@"HH:mm:ss.FFF", CultureInfo.InvariantCulture)
-                    : timeOnly.ToString(@"HH:mm:ss", CultureInfo.InvariantCulture);
-                BindText(value);
+                if (_sqliteType == SqliteType.Real)
+                {
+                    var value = ToJulianTime(timeOnly.Hour, timeOnly.Minute, timeOnly.Second, timeOnly.Millisecond);
+                    BindDouble(value);
+                }
+                else
+                {
+                    var value = timeOnly.Ticks % 10000000 == 0
+                        ? timeOnly.ToString(@"HH:mm:ss", CultureInfo.InvariantCulture)
+                        : timeOnly.ToString(@"HH:mm:ss.FFFFFFF", CultureInfo.InvariantCulture);
+                    BindText(value);
+                }
             }
 #endif
             else if (type == typeof(DBNull))
@@ -294,6 +302,13 @@ namespace Microsoft.Data.Sqlite
             var iJD = (long)((X1 + X2 + D + B - 1524.5) * 86400000);
 
             iJD += hour * 3600000 + minute * 60000 + (long)((second + millisecond / 1000.0) * 1000);
+
+            return iJD / 86400000.0;
+        }
+
+        private static double ToJulianTime(int hour, int minute, int second, int millisecond)
+        {
+            var iJD = hour * 3600000 + minute * 60000 + (long)((second + millisecond / 1000.0) * 1000);
 
             return iJD / 86400000.0;
         }

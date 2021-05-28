@@ -273,6 +273,11 @@ namespace Microsoft.Data.Sqlite
         [Fact]
         public void Bind_works_when_TimeOnly_with_milliseconds()
             => Bind_works(new TimeOnly(13, 10, 15, 500), "13:10:15.5");
+
+        [Fact]
+        public void Bind_works_when_TimeOnly_with_SqliteType_Real()
+            => Bind_works(new TimeOnly(13, 10, 15), 0.5487847222222222, SqliteType.Real);
+
 #endif
 
         [Fact]

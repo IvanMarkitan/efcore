@@ -90,12 +90,12 @@ namespace Microsoft.EntityFrameworkCore.Query
         //public static MethodInfo DistinctWithComparer { get; }
 
         /// <summary>
-        ///     The <see cref="MethodInfo" /> for <see cref="Queryable.ElementAt{TSource}" />
+        ///     The <see cref="MethodInfo" /> for <see cref="Queryable.ElementAt{TSource}(IQueryable{TSource}, int)" />
         /// </summary>
         public static MethodInfo ElementAt { get; }
 
         /// <summary>
-        ///     The <see cref="MethodInfo" /> for <see cref="Queryable.ElementAtOrDefault{TSource}" />
+        ///     The <see cref="MethodInfo" /> for <see cref="Queryable.ElementAtOrDefault{TSource}(IQueryable{TSource}, int)" />
         /// </summary>
         public static MethodInfo ElementAtOrDefault { get; }
 
@@ -216,22 +216,22 @@ namespace Microsoft.EntityFrameworkCore.Query
         public static MethodInfo LongCountWithPredicate { get; }
 
         /// <summary>
-        ///     The <see cref="MethodInfo" /> for <see cref="Queryable.Max{TSource,TResult}(IQueryable{TSource},Expression{Func{TSource,TResult}})" />
+        ///     The <see cref="MethodInfo" /> for <see cref="Queryable.Max{TSource}(IQueryable{TSource})" />
         /// </summary>
         public static MethodInfo MaxWithoutSelector { get; }
 
         /// <summary>
-        ///     The <see cref="MethodInfo" /> for <see cref="Queryable.Max{TSource}" />
+        ///     The <see cref="MethodInfo" /> for <see cref="Queryable.Max{TSource,TResult}(IQueryable{TSource},Expression{Func{TSource,TResult}})" />
         /// </summary>
         public static MethodInfo MaxWithSelector { get; }
 
         /// <summary>
-        ///     The <see cref="MethodInfo" /> for <see cref="Queryable.Min{TSource,TResult}(IQueryable{TSource},Expression{Func{TSource,TResult}})" />
+        ///     The <see cref="MethodInfo" /> for <see cref="Queryable.Min{TSource}(IQueryable{TSource})" />
         /// </summary>
         public static MethodInfo MinWithoutSelector { get; }
 
         /// <summary>
-        ///     The <see cref="MethodInfo" /> for <see cref="Queryable.Min{TSource}" />
+        ///     The <see cref="MethodInfo" /> for <see cref="Queryable.Min{TSource,TResult}(IQueryable{TSource},Expression{Func{TSource,TResult}})" />
         /// </summary>
         public static MethodInfo MinWithSelector { get; }
 
@@ -322,7 +322,7 @@ namespace Microsoft.EntityFrameworkCore.Query
         //public static MethodInfo SkipWhileOrdinal { get; }
 
         /// <summary>
-        ///     The <see cref="MethodInfo" /> for <see cref="Queryable.Take{TSource}" />
+        ///     The <see cref="MethodInfo" /> for <see cref="Queryable.Take{TSource}(IQueryable{TSource}, int)" />
         /// </summary>
         public static MethodInfo Take { get; }
 

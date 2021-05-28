@@ -410,7 +410,7 @@ WHERE CAST(strftime('%w', ""m"".""Date"") AS INTEGER) = 6");
             AssertSql(
                 @"SELECT ""m"".""Id"", ""m"".""CodeName"", ""m"".""Date"", ""m"".""Duration"", ""m"".""Rating"", ""m"".""Time"", ""m"".""Timeline""
 FROM ""Missions"" AS ""m""
-WHERE strftime('%Y-%m-%d', ""m"".""Date"", CAST(3 AS TEXT) || ' years') = '1993-11-10'");
+WHERE date(""m"".""Date"", CAST(3 AS TEXT) || ' years') = '1993-11-10'");
         }
 
         [ConditionalTheory]
@@ -422,7 +422,7 @@ WHERE strftime('%Y-%m-%d', ""m"".""Date"", CAST(3 AS TEXT) || ' years') = '1993-
             AssertSql(
                 @"SELECT ""m"".""Id"", ""m"".""CodeName"", ""m"".""Date"", ""m"".""Duration"", ""m"".""Rating"", ""m"".""Time"", ""m"".""Timeline""
 FROM ""Missions"" AS ""m""
-WHERE strftime('%Y-%m-%d', ""m"".""Date"", CAST(3 AS TEXT) || ' months') = '1991-02-10'");
+WHERE date(""m"".""Date"", CAST(3 AS TEXT) || ' months') = '1991-02-10'");
         }
 
         [ConditionalTheory]
@@ -434,7 +434,7 @@ WHERE strftime('%Y-%m-%d', ""m"".""Date"", CAST(3 AS TEXT) || ' months') = '1991
             AssertSql(
                 @"SELECT ""m"".""Id"", ""m"".""CodeName"", ""m"".""Date"", ""m"".""Duration"", ""m"".""Rating"", ""m"".""Time"", ""m"".""Timeline""
 FROM ""Missions"" AS ""m""
-WHERE strftime('%Y-%m-%d', ""m"".""Date"", CAST(3 AS TEXT) || ' days') = '1990-11-13'");
+WHERE date(""m"".""Date"", CAST(3 AS TEXT) || ' days') = '1990-11-13'");
         }
 
         [ConditionalTheory] // #18844

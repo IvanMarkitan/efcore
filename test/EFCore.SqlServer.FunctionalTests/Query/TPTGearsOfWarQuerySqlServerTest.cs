@@ -8912,7 +8912,7 @@ ORDER BY CASE
 END, [t].[Note]");
         }
 
-                [ConditionalTheory] // #24507
+        [ConditionalTheory] // #24507
         [MemberData(nameof(IsAsyncData))]
         public override Task Where_DateOnly_Year(bool async)
             => Task.CompletedTask;

@@ -6,7 +6,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 
+#pragma warning disable EF1001
+
 [assembly: TypeForwardedTo(typeof(ObservableBackedBindingList<>))]
 [assembly: TypeForwardedTo(typeof(ObservableCollectionExtensions))]
 [assembly: TypeForwardedTo(typeof(ObservableCollectionListSource<>))]
 [assembly: TypeForwardedTo(typeof(SortableBindingList<>))]
+
+#pragma warning restore EF1001

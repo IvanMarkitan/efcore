@@ -55,7 +55,9 @@ namespace Microsoft.EntityFrameworkCore.ChangeTracking
         IListSource
         where TEntity : class
     {
+#pragma warning disable EF1001
         private ObservableBackedBindingList<TEntity>? _bindingList;
+#pragma warning restore EF1001
         private ObservableCollection<TEntity>? _observable;
         private readonly DbContext _context;
         private int _countChanges;
@@ -439,8 +441,10 @@ namespace Microsoft.EntityFrameworkCore.ChangeTracking
         ///     Use this for WinForms data binding.
         /// </summary>
         /// <returns> The binding list. </returns>
+#pragma warning disable EF1001
         public virtual BindingList<TEntity> ToBindingList()
             => _bindingList ??= new ObservableBackedBindingList<TEntity>(ToObservableCollection());
+#pragma warning restore EF1001
 
         /// <summary>
         ///     <para>

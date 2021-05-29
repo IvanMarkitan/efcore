@@ -17,10 +17,10 @@ namespace Microsoft.EntityFrameworkCore.Query
 
             modelBuilder.Entity<City>().Property(g => g.Location).HasColumnType("varchar(100)");
 
-            // Full-text binary search
             modelBuilder.Entity<Mission>(
                 b =>
                 {
+                    // Full-text binary search
                     b.Property<byte[]>("BriefingDocument");
                     b.Property<string>("BriefingDocumentFileExtension").HasColumnType("nvarchar(16)");
                 });

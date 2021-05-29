@@ -8912,87 +8912,87 @@ ORDER BY CASE
 END, [t].[Note]");
         }
 
-        [ConditionalTheory] // #24507
+        [ConditionalTheory(Skip = "#24507")]
         [MemberData(nameof(IsAsyncData))]
         public override Task Where_DateOnly_Year(bool async)
             => Task.CompletedTask;
 
-        [ConditionalTheory] // #24507
+        [ConditionalTheory(Skip = "#24507")]
         [MemberData(nameof(IsAsyncData))]
         public override Task Where_DateOnly_Month(bool async)
             => Task.CompletedTask;
 
-        [ConditionalTheory] // #24507
+        [ConditionalTheory(Skip = "#24507")]
         [MemberData(nameof(IsAsyncData))]
         public override Task Where_DateOnly_Day(bool async)
             => Task.CompletedTask;
 
-        [ConditionalTheory] // #24507
+        [ConditionalTheory(Skip = "#24507")]
         [MemberData(nameof(IsAsyncData))]
         public override Task Where_DateOnly_DayOfYear(bool async)
             => Task.CompletedTask;
 
-        [ConditionalTheory] // #24507
+        [ConditionalTheory(Skip = "#24507")]
         [MemberData(nameof(IsAsyncData))]
         public override Task Where_DateOnly_DayOfWeek(bool async)
             => Task.CompletedTask;
 
-        [ConditionalTheory] // #24507
+        [ConditionalTheory(Skip = "#24507")]
         [MemberData(nameof(IsAsyncData))]
         public override Task Where_DateOnly_AddYears(bool async)
             => Task.CompletedTask;
 
-        [ConditionalTheory] // #24507
+        [ConditionalTheory(Skip = "#24507")]
         [MemberData(nameof(IsAsyncData))]
         public override Task Where_DateOnly_AddMonths(bool async)
             => Task.CompletedTask;
 
-        [ConditionalTheory] // #24507
+        [ConditionalTheory(Skip = "#24507")]
         [MemberData(nameof(IsAsyncData))]
         public override Task Where_DateOnly_AddDays(bool async)
             => Task.CompletedTask;
 
-        [ConditionalTheory] // #24507
+        [ConditionalTheory(Skip = "#24507")]
         [MemberData(nameof(IsAsyncData))]
         public override Task Where_TimeOnly_Hour(bool async)
             => Task.CompletedTask;
 
-        [ConditionalTheory] // #24507
+        [ConditionalTheory(Skip = "#24507")]
         [MemberData(nameof(IsAsyncData))]
         public override Task Where_TimeOnly_Minute(bool async)
             => Task.CompletedTask;
 
-        [ConditionalTheory] // #24507
+        [ConditionalTheory(Skip = "#24507")]
         [MemberData(nameof(IsAsyncData))]
         public override Task Where_TimeOnly_Second(bool async)
             => Task.CompletedTask;
 
-        [ConditionalTheory] // #24507
+        [ConditionalTheory(Skip = "#24507")]
         [MemberData(nameof(IsAsyncData))]
         public override Task Where_TimeOnly_Millisecond(bool async)
             => Task.CompletedTask;
 
-        [ConditionalTheory] // #24507
+        [ConditionalTheory(Skip = "#24507")]
         [MemberData(nameof(IsAsyncData))]
         public override Task Where_TimeOnly_AddHours(bool async)
             => Task.CompletedTask;
 
-        [ConditionalTheory] // #24507
+        [ConditionalTheory(Skip = "#24507")]
         [MemberData(nameof(IsAsyncData))]
         public override Task Where_TimeOnly_AddMinutes(bool async)
             => Task.CompletedTask;
 
-        [ConditionalTheory] // #24507
+        [ConditionalTheory(Skip = "#24507")]
         [MemberData(nameof(IsAsyncData))]
         public override Task Where_TimeOnly_Add_TimeSpan(bool async)
             => Task.CompletedTask;
 
-        [ConditionalTheory] // #24507
+        [ConditionalTheory(Skip = "#24507")]
         [MemberData(nameof(IsAsyncData))]
         public override Task Where_TimeOnly_IsBetween(bool async)
             => Task.CompletedTask;
 
-        [ConditionalTheory] // #24507
+        [ConditionalTheory(Skip = "#24507")]
         [MemberData(nameof(IsAsyncData))]
         public override Task Where_TimeOnly_subtract_TimeOnly(bool async)
             => Task.CompletedTask;

@@ -60,23 +60,15 @@ namespace Microsoft.EntityFrameworkCore.Sqlite.Query.Internal
             Check.NotNull(returnType, nameof(returnType));
             Check.NotNull(logger, nameof(logger));
 
-            if (member.DeclaringType != typeof(DateOnly))
-            {
-                return null;
-            }
-
-            if (_datePartMapping.TryGetValue(member.Name, out var datePart))
-            {
-                return _sqlExpressionFactory.Convert(
+            return member.DeclaringType == typeof(DateOnly) && _datePartMapping.TryGetValue(member.Name, out var datePart)
+                ? _sqlExpressionFactory.Convert(
                     SqliteExpression.Strftime(
                         _sqlExpressionFactory,
                         typeof(string),
                         datePart,
                         instance!),
-                    returnType);
-            }
-
-            return null;
+                    returnType)
+                : null;
         }
     }
 }

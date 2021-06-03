@@ -132,14 +132,14 @@ namespace Microsoft.Data.Sqlite
                 var timeOnly = (TimeOnly)_value;
                 if (_sqliteType == SqliteType.Real)
                 {
-                    var value = ToJulianTime(timeOnly.Hour, timeOnly.Minute, timeOnly.Second, timeOnly.Millisecond);
+                    var value = GetTotalDays(timeOnly.Hour, timeOnly.Minute, timeOnly.Second, timeOnly.Millisecond);
                     BindDouble(value);
                 }
                 else
                 {
                     var value = timeOnly.Ticks % 10000000 == 0
                         ? timeOnly.ToString(@"HH:mm:ss", CultureInfo.InvariantCulture)
-                        : timeOnly.ToString(@"HH:mm:ss.FFFFFFF", CultureInfo.InvariantCulture);
+                        : timeOnly.ToString(@"HH:mm:ss.fffffff", CultureInfo.InvariantCulture);
                     BindText(value);
                 }
             }
@@ -306,7 +306,7 @@ namespace Microsoft.Data.Sqlite
             return iJD / 86400000.0;
         }
 
-        private static double ToJulianTime(int hour, int minute, int second, int millisecond)
+        private static double GetTotalDays(int hour, int minute, int second, int millisecond)
         {
             var iJD = hour * 3600000 + minute * 60000 + (long)((second + millisecond / 1000.0) * 1000);
 

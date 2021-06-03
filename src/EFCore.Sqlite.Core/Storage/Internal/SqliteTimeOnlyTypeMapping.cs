@@ -54,9 +54,9 @@ namespace Microsoft.EntityFrameworkCore.Sqlite.Storage.Internal
         {
             var timeOnly = (TimeOnly)value;
 
-            return timeOnly.Ticks % 10000000 == 0
+            return timeOnly.Ticks % TimeSpan.TicksPerSecond == 0
                 ? FormattableString.Invariant($@"'{value:HH\:mm\:ss}'")
-                : FormattableString.Invariant($@"'{value:HH\:mm\:ss\.FFFFFFF}'");
+                : FormattableString.Invariant($@"'{value:HH\:mm\:ss\.fffffff}'");
         }
     }
 }

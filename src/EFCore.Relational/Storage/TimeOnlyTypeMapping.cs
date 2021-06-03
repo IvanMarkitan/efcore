@@ -55,7 +55,7 @@ namespace Microsoft.EntityFrameworkCore.Storage
         {
             var timeOnly = (TimeOnly)value;
 
-            return timeOnly.Ticks % 10000000 == 0
+            return timeOnly.Ticks % TimeSpan.TicksPerSecond == 0
                 ? FormattableString.Invariant($@"TIME '{value:HH\:mm\:ss}'")
                 : FormattableString.Invariant($@"TIME '{value:HH\:mm\:ss\.FFFFFFF}'");
         }

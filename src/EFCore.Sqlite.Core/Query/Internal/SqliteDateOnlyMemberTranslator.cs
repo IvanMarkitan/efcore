@@ -24,11 +24,11 @@ namespace Microsoft.EntityFrameworkCore.Sqlite.Query.Internal
         private static readonly Dictionary<string, string> _datePartMapping
             = new()
             {
-                { nameof(DateTime.Year), "%Y" },
-                { nameof(DateTime.Month), "%m" },
-                { nameof(DateTime.DayOfYear), "%j" },
-                { nameof(DateTime.Day), "%d" },
-                { nameof(DateTime.DayOfWeek), "%w" }
+                { nameof(DateOnly.Year), "%Y" },
+                { nameof(DateOnly.Month), "%m" },
+                { nameof(DateOnly.DayOfYear), "%j" },
+                { nameof(DateOnly.Day), "%d" },
+                { nameof(DateOnly.DayOfWeek), "%w" }
             };
 
         private readonly ISqlExpressionFactory _sqlExpressionFactory;
